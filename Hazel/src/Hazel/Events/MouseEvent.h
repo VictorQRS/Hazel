@@ -105,7 +105,7 @@ namespace Hazel {
 
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "MouseButtonPressedEvent: " << GetMouseButton();
+			ss << "MouseButtonReleasedEvent: " << GetMouseButton();
 			return ss.str();
 		}
 

@@ -49,9 +49,9 @@ namespace Hazel {
 	/*
 	 * Key released event handler
 	 */
-	class HAZEL_API KeyPressedEvent : public KeyEvent {
+	class HAZEL_API KeyReleasedEvent : public KeyEvent {
 	public:
-		KeyPressedEvent(int keycode)
+		KeyReleasedEvent(int keycode)
 			: KeyEvent(keycode)
 		{}
 
