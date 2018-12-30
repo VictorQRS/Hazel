@@ -31,18 +31,15 @@ namespace Hazel {
 	 * Event base class
 	 */
 	class HAZEL_API Event {
-		friend class EventDispatcher;
-
 	public:
+		bool handled = false;
+
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName(); }
 
 		inline bool IsInCategory(EventCategory category);
-
-	protected:
-		bool _handled = false;
 	};
 
 	bool Event::IsInCategory(EventCategory category) {
@@ -64,7 +61,7 @@ namespace Hazel {
 		template <typename T>
 		bool Dispatch(EventFn<T> func) {
 			if (_event.GetEventType() == T::GetStaticType()) {
-				_event._handled = func(*(T*)&_event);
+				_event.handled = func(*(T*)&_event);
 				return true;
 			}
 			return false;
