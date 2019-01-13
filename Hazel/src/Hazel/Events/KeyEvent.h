@@ -31,7 +31,7 @@ namespace Hazel {
 			: KeyEvent(keycode), _repeat(repeatCount)
 		{}
 
-		inline int GewrRepeatCount() const { return _repeat; }
+		inline int GetRepeatCount() const { return _repeat; }
 
 		std::string ToString() const override{
 			std::stringstream ss;
