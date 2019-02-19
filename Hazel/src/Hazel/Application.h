@@ -20,12 +20,16 @@ namespace Hazel {
 		void pushLayer(Layer* layer);
 		void pushOverlay(Layer* overlay);
 
+		inline static Application& get() { return *s_Instance; }
+		inline Window& getWindow() { return *_window; }
 	private:
 		bool onWindowClose(WindowCloseEvent& wce);
 
 		std::unique_ptr<Window> _window;
 		bool _running = true;
 		LayerStack _layerStack;
+	private:
+		static Application* s_Instance;
 	};
 
 	// To be defined in the client
