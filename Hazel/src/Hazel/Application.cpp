@@ -7,8 +7,6 @@
 
 namespace Hazel {
 
-#define BIND_EVENT_FN(x) std::bind(&Application:: ## x, this, std::placeholders::_1)
-
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application() {
@@ -16,7 +14,7 @@ namespace Hazel {
 		s_Instance = this;
 
 		_window = std::unique_ptr<Window>(Window::create());
-		_window->setEventCallback(BIND_EVENT_FN(onEvent));
+		_window->setEventCallback(HZ_BIND_EVENT_FN(Application::onEvent));
 	}
 
 	Application::~Application() {
@@ -36,7 +34,7 @@ namespace Hazel {
 
 	void Application::onEvent(Event& e) {
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(onWindowClose));
+		dispatcher.Dispatch<WindowCloseEvent>(HZ_BIND_EVENT_FN(Application::onWindowClose));
 
 		HZ_CORE_TRACE("{0}", e);
 

@@ -95,6 +95,12 @@ namespace Hazel {
 			}
 		});
 
+		glfwSetCharCallback(_window, [](GLFWwindow* window, unsigned int keycode) {
+			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+			KeyTypedEvent event(keycode);
+			data.EventCallback(event);
+		});
+
 		glfwSetMouseButtonCallback(_window, [](GLFWwindow* window, int button, int action, int mods) {
 			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
 
