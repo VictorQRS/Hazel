@@ -8,6 +8,8 @@
 #include "Hazel/Log.h"
 
 #include "Hazel/Input.h"
+#include "Hazel/Keycodes.h"
+#include "Hazel/MouseButtonCodes.h"
 
 #include "Hazel/ImGui/ImGuiLayer.h"
 
